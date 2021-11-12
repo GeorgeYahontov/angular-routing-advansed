@@ -4,19 +4,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { PhraseDetailsComponent } from './phrase-details/phrase-details.component';
-import { PhraseListComponent } from './phrase-list/phrase-list.component';
+import {PhrasesModule} from "./phrases/phrases.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    PhraseDetailsComponent,
-    PhraseListComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PhrasesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
