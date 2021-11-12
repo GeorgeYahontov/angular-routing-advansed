@@ -1,2 +1,8 @@
-
-<h3>Phrase item</h3>
+<div *ngIf = 'phrase'>
+  <h3>Selected phrase</h3>
+  <div>Value:{{phrase.value}}</div>
+  <div>Language:{{phrase.language}}</div>
+  <div>
+    <button (click)="goToPhrasesList()">Go to list</button>
+  </div>
+</div>

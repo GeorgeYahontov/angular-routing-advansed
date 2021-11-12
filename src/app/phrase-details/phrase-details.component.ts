@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {PhraseService} from "../shared/phrase.service";
+import {Phrase} from "../shared/phrase.class";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 
 @Component({
   selector: 'app-phrase-details',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PhraseDetailsComponent implements OnInit {
 
-  constructor() { }
+  phrase: Phrase;
+
+  constructor(
+    private svc: PhraseService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
+
+    this.activatedRoute.params.forEach((params: Params) => {
+      const id = +params.id
+      console.log(params.id);
+      this.svc
+        .getPhrase(id)
+        .then(res => this.phrase = res);
+    })
+
+
+  }
+  goToPhrasesList(): void{
+    this.router.navigate(['/phrases']);
   }
 
 }
