@@ -41,10 +41,16 @@ nav{
     max-width: 250px;
     border-radius: 7px;
     transition: padding 0.25s;
-    &:hover{
-      padding-left:15px;
+    &:hover {
+      padding-left: 15px;
       padding-right: 15px;
       background-color: lightcoral;
+    }
+    &.selected{
+      padding-left:15px;
+      padding-right: 15px;
+      background-color: lightskyblue;
+      font-weight: bold;
     }
   }
 }
