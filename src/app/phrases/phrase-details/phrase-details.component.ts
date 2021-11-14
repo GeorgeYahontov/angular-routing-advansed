@@ -19,7 +19,7 @@ export class PhraseDetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.activatedRoute.params.forEach((params: Params) => {
+    this.activatedRoute.params.subscribe((params: Params) => {
       const id = +params.id
       console.log(params.id);
       this.svc
@@ -30,7 +30,7 @@ export class PhraseDetailsComponent implements OnInit {
 
   }
   goToPhrasesList(): void{
-    this.router.navigate(['/phrases']);
+    this.router.navigate(['/phrases']).then(() => {});
   }
 
 }

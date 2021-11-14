@@ -22,7 +22,7 @@ export class PhraseListComponent implements OnInit {
 
   onSelect(phrase: Phrase): void {
     //siteurl/phrase/3
-    this.router.navigate(['phrase', phrase.id])
+    this.router.navigate(['phrase', phrase.id]).then(() => {});
   }
 
 }
