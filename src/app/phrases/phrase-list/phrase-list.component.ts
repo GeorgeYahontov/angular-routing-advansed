@@ -19,6 +19,7 @@ export class PhraseListComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params:Params) => {
       this.selectedID = +params.id;
+      console.log(params)
 
       this.svc
         .getAll()
@@ -32,7 +33,7 @@ export class PhraseListComponent implements OnInit {
 
   onSelect(phrase: Phrase): void {
     //siteurl/phrase/3
-    this.router.navigate(['phrase', phrase.id]).then(() => {});
+    this.router.navigate([ phrase.id], {relativeTo: this.activatedRoute}).then(() => {});
   }
 
 }
