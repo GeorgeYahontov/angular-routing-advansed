@@ -35,3 +35,4 @@ export class PhraseDetailsComponent implements OnInit {
   }
 
 }
+``
