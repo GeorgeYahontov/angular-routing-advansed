@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PhraseService} from "../../shared/phrase.service";
 import {Phrase} from "../../shared/phrase.class";
-import {ActivatedRoute, Params, Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../shared/auth.service";
 import {Observable} from "rxjs";
 
@@ -24,22 +24,11 @@ export class PhraseDetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.activatedRoute.params.subscribe((params: Params) => {
-      const id = +params.id
-      console.log(params.id);
-      this.svc
-        .getPhrase(id)
-        .then(res => {
-          this.phrase = res;
-          if (this.phrase){
-            this.editValue = this.phrase.value;
-            this.editLanguage = this.phrase.language;
-          }
-        });
-
+    this.activatedRoute.data.subscribe((data: { phrase: Phrase }) =>{
+      this.phrase = data.phrase;
+      this.editValue = this.phrase.value;
+      this.editLanguage = this.phrase.language;
     })
-
-
   }
   goToPhrasesList(): void{
     const phraseID = this.phrase ? this.phrase.id : null;
