@@ -25,14 +25,15 @@ export class LoginComponent implements OnInit {
   login (): void{
     this.message = 'Trying to log in...';
 
-    this.authService.login(this.userLogin, this.userPassword);
-
-    this.setMessage();
-    if (this.authService.isLoggedIn){
-      if (this.authService.redirectUrl){
-        this.router.navigate([this.authService.redirectUrl]).then();
+    this.authService.login(this.userLogin, this.userPassword).subscribe(res =>{
+      console.log(`Login subscribe result: ${res}`);
+      this.setMessage();
+      if (this.authService.isLoggedIn){
+        if (this.authService.redirectUrl){
+          this.router.navigate([this.authService.redirectUrl]).then();
+        }
       }
-    }
+    });
   }
   logout (): void{
     this.authService.logout();
